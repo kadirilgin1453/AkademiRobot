@@ -1,5 +1,5 @@
 {
-    "name": "kekikRobot",
+    "name": "AkademiRobot",
     "description": "KekikAkademi için PyroGram Robot",
     "logo": "https://i.imgur.com/dTxK1zA.jpg",
     "keywords": [
@@ -8,9 +8,9 @@
       "Robot",
       "kekikakademi",
       "keyiflerolsun",
-      "kekikRobot"
+      "AkademiRobot"
     ],
-    "repository": "https://github.com/KekikAkademi/kekikRobot",
+    "repository": "https://github.com/keyiflerolsun/AkademiRobot",
     "success_url": "https://t.me/KekikAkademi",
     "website": "https://www.kekikakademi.org/",
     "env": {
@@ -46,7 +46,7 @@
       },
       "SESSION_ADI": {
         "description": "Botunuzun Kullanıcı Adı",
-        "value": "kekikRobot",
+        "value": "AkademiRobot",
         "required": true
       },
       "INDIRME_ALANI": {

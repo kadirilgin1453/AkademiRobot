@@ -14,7 +14,7 @@ start_butonu += [[InlineKeyboardButton("💸 Bağışta Bulun", url="https://t.m
 yardim_butonu = [
     [
         InlineKeyboardButton("👤 Beni Gruba Ekle", url=f"https://t.me/{SESSION_ADI}?startgroup=ch"),
-        InlineKeyboardButton("👷 Kodlarıma Ulaş", url="https://github.com/KekikAkademi/kekikRobot")
+        InlineKeyboardButton("👷 Kodlarıma Ulaş", url="https://github.com/keyiflerolsun/AkademiRobot")
     ],
     [
         InlineKeyboardButton("🔙 Geri", callback_data="geri_don")

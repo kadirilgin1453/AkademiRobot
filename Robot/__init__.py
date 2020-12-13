@@ -8,7 +8,7 @@ from KekikTaban import KekikTaban
 
 taban = KekikTaban(
     baslik   = "@KekikAkademi Robot",
-    aciklama = "kekikRobot Başlatıldı..",
+    aciklama = "AkademiRobot Başlatıldı..",
     banner   = "kekikRobot",
     girinti  = 3
 )
@@ -48,12 +48,12 @@ API_HASH        = str(os.environ.get("API_HASH", str))
 BOT_TOKEN       = str(os.environ.get("BOT_TOKEN", str))
 LOG_ID          = str(os.environ.get("LOG_ID", str))
 YETKILI         = str(os.environ.get("YETKILI", str)).split(',')
-SESSION_ADI     = os.environ.get("SESSION_ADI", "kekikRobot")
+SESSION_ADI     = os.environ.get("SESSION_ADI", "AkademiRobot")
 INDIRME_ALANI   = os.environ.get("INDIRME_ALANI", "downloads/")
 if not os.path.isdir(INDIRME_ALANI): os.makedirs(INDIRME_ALANI)
 
 try:
-    kekikRobot          = Client(
+    AkademiRobot          = Client(
         api_id          = API_ID,
         api_hash        = API_HASH,
         session_name    = f'@{SESSION_ADI}',
@@ -74,7 +74,7 @@ for dosya in os.listdir("./Robot/Eklentiler/"):
 
 def baslangic() -> None:
     try:
-        kekikRobot.start()
+        AkademiRobot.start()
     except ApiIdInvalid:
         hata('\n\tayar.env dosyasındaki API Bilgileri Geçersiz..\n')
         quit(1)
@@ -86,4 +86,4 @@ def baslangic() -> None:
     konsol.print(f"[gold1]@{SESSION_ADI}[/] [yellow]:bird:[/] [bold red]Python: [/][i]{surum}[/]", width=70, justify="center")
     basarili(f"{SESSION_ADI} [magenta]v[/] [blue]{__version__}[/] [red]Pyrogram[/] tabanında [magenta]{len(tum_eklentiler)} eklentiyle[/] çalışıyor...\n")
 
-    kekikRobot.stop()
+    AkademiRobot.stop()
