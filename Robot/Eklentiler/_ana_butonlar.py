@@ -21,27 +21,21 @@ yardim_butonu = [
     ]
 ]
 
-# Kullanıcı Kaydet
-from Robot.Edevat.dict2json import dict2json
-from Robot.Edevat._pyrogram.pyro_yardimcilari import kullanici
-
-kullanicilar = f"{SESSION_ADI}_KULLANICILAR.json"
+from Robot.Edevat.zenginLog import log_yolla
 
 @Client.on_message(filters.command(['start'], ['!','.','/']))
 async def start_buton(client:Client, message:Message):
-    if message.chat.type == "private":
-        #Kullanıcı Kaydet
-        dict2json({
-                'kullanici_id'  : message.from_user.id,
-                'kullanici_nick': f"@{message.from_user.username}" if message.from_user.username else None,
-                'kullanici_adi' : f"{message.from_user.first_name or ''} {message.from_user.last_name or ''}".strip()
-            }, liste_key="kullanici_id", dosya_adi=kullanicilar)
+    # < Başlangıç
+    await log_yolla(client, message)
 
-        vatandas, _ = await kullanici(message)
-        await client.send_document(YETKILI[0], kullanicilar, caption=f"{vatandas} __Eklendi..__")
+    ilk_mesaj = await message.reply("⌛️ `Hallediyorum..`",
+        quote                    = True,
+        disable_web_page_preview = True
+    )
+    #------------------------------------------------------------- Başlangıç >
 
-    # Hoş Geldin Mesajı
-    await message.reply(start_mesajı, reply_markup=InlineKeyboardMarkup(start_butonu))
+    await ilk_mesaj.delete()
+    await message.reply(start_mesajı, quote = True, reply_markup=InlineKeyboardMarkup(start_butonu))
 
 @Client.on_callback_query(filters.regex(pattern=r"^geri_don$"))
 async def geri_don_bilgisi(client:Client, callback_query:CallbackQuery):

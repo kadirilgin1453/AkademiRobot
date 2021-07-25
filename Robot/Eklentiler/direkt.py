@@ -29,9 +29,10 @@ from humanize import naturalsize
 async def direkt(client:Client, message:Message):
     # < Başlangıç
     await log_yolla(client, message)
-    ilk_mesaj = await message.reply("__Bekleyin..__",
-        disable_web_page_preview    = True,
-        parse_mode                  = "Markdown"
+
+    ilk_mesaj = await message.reply("⌛️ `Hallediyorum..`",
+        quote                    = True,
+        disable_web_page_preview = True
     )
     #------------------------------------------------------------- Başlangıç >
 

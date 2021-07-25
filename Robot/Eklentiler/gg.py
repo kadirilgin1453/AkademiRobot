@@ -18,7 +18,6 @@ DESTEK_KOMUT.update({
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from Robot.Edevat._pyrogram.pyro_yardimcilari import yanitlanan_mesaj
 from time import time
 import requests
 
@@ -26,9 +25,9 @@ import requests
 async def gg_komut(client:Client, message:Message):                           # fonksiyon oluşturuyoruz
     # < Başlangıç
     await log_yolla(client, message)
-    yanit_id  = await yanitlanan_mesaj(message)
-    ilk_mesaj = await message.reply("__Bekleyin..__",
-        reply_to_message_id      = yanit_id,
+
+    ilk_mesaj = await message.reply("⌛️ `Hallediyorum..`",
+        quote                    = True,
         disable_web_page_preview = True
     )
     girilen_yazi        = message.command

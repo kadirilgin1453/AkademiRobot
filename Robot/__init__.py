@@ -9,7 +9,7 @@ from KekikTaban import KekikTaban
 taban = KekikTaban(
     baslik   = "@KekikAkademi Robot",
     aciklama = "AkademiRobot Başlatıldı..",
-    banner   = "kekikRobot",
+    banner   = "AkademiRobot",
     girinti  = 3
 )
 
@@ -47,16 +47,23 @@ API_ID          = str(os.environ.get("API_ID", str))
 API_HASH        = str(os.environ.get("API_HASH", str))
 BOT_TOKEN       = str(os.environ.get("BOT_TOKEN", str))
 LOG_ID          = str(os.environ.get("LOG_ID", str))
-YETKILI         = str(os.environ.get("YETKILI", str)).split(',')
+YETKILI         = [int(yetkili) for yetkili in str(os.environ.get("YETKILI", str)).split(',')]
 SESSION_ADI     = os.environ.get("SESSION_ADI", "AkademiRobot")
 INDIRME_ALANI   = os.environ.get("INDIRME_ALANI", "downloads/")
 if not os.path.isdir(INDIRME_ALANI): os.makedirs(INDIRME_ALANI)
+
+MONGO_DB        = str(os.environ.get("MONGO_DB", str)) if os.environ.get("MONGO_DB") else None
+
+if MONGO_DB:
+    from Robot.Edevat.DB._MongoDB import AkademiRobotDB
+else:
+    from Robot.Edevat.DB._TinyDB import AkademiRobotDB
 
 try:
     AkademiRobot          = Client(
         api_id          = API_ID,
         api_hash        = API_HASH,
-        session_name    = f'@{SESSION_ADI}',
+        session_name    = ':memory:',
         bot_token       = BOT_TOKEN,
         plugins         = dict(root="Robot/Eklentiler")
     )
@@ -66,11 +73,11 @@ except ValueError:
 
 DESTEK_KOMUT = {}
 
-tum_eklentiler = []
-for dosya in os.listdir("./Robot/Eklentiler/"):
-    if not dosya.endswith(".py") or dosya.startswith("_"):
-        continue
-    tum_eklentiler.append(f"📂 {dosya.replace('.py','')}")
+tum_eklentiler = [
+    f"📂 {dosya.replace('.py','')}"
+        for dosya in os.listdir("./Robot/Eklentiler/")
+            if dosya.endswith(".py") and not dosya.startswith("_")
+]
 
 def baslangic() -> None:
     try:

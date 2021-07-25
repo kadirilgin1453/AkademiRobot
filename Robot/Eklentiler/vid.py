@@ -28,7 +28,7 @@ from Robot.Edevat._ytdl.ytdl_indirici import ytdl_indirici
 from Robot.Edevat._pyrogram.progress import pyro_progress
 from Robot.Edevat.gecici_alan_temizleyici import icinden_gec
 from Robot import INDIRME_ALANI, SESSION_ADI
-from Robot.Edevat._pyrogram.pyro_yardimcilari import yanitlanan_mesaj, kullanici
+from Robot.Edevat._pyrogram.pyro_yardimcilari import kullanici
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from asyncio import sleep
@@ -38,9 +38,9 @@ import time
 async def vid(client:Client, message:Message):
     # < Başlangıç
     await log_yolla(client, message)
-    yanit_id  = await yanitlanan_mesaj(message)
-    ilk_mesaj = await message.reply("__Bekleyin..__",
-        reply_to_message_id      = yanit_id,
+
+    ilk_mesaj = await message.reply("⌛️ `Hallediyorum..`",
+        quote                    = True,
         disable_web_page_preview = True
     )
 

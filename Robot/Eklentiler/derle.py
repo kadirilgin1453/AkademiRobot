@@ -22,16 +22,15 @@ DESTEK_KOMUT.update({
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from Robot.Edevat.Spatula.derleyici_spatula import calistir
-from Robot.Edevat._pyrogram.pyro_yardimcilari import yanitlanan_mesaj
 from os import remove
 
 @Client.on_message(filters.command(['derle'], ['!','.','/']))
 async def derle(client:Client, message:Message):
     # < Başlangıç
     await log_yolla(client, message)
-    yanit_id  = await yanitlanan_mesaj(message)
-    ilk_mesaj = await message.reply("__Bekleyin..__",
-        reply_to_message_id      = yanit_id,
+
+    ilk_mesaj = await message.reply("⌛️ `Hallediyorum..`",
+        quote                    = True,
         disable_web_page_preview = True
     )
     girilen_yazi        = message.command
@@ -58,9 +57,7 @@ async def derle(client:Client, message:Message):
         with open(gelen_dosya, "rb") as oku:
             veri_listesi = oku.readlines()
 
-        inen_veri = ""
-        for veri in veri_listesi:
-            inen_veri += veri.decode("UTF-8")
+        inen_veri = "".join(veri.decode("UTF-8") for veri in veri_listesi)
 
         kod = inen_veri
 

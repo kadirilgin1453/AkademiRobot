@@ -22,7 +22,6 @@ DESTEK_KOMUT.update({
 
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from Robot.Edevat._pyrogram.pyro_yardimcilari import yanitlanan_mesaj
 from Robot.Edevat.link_ayikla import link_ayikla
 import aiohttp, os, requests
 
@@ -30,9 +29,9 @@ import aiohttp, os, requests
 async def nekover(client:Client, message:Message):
     # < Başlangıç
     await log_yolla(client, message)
-    yanit_id  = await yanitlanan_mesaj(message)
-    ilk_mesaj = await message.reply("__Bekleyin..__",
-        reply_to_message_id      = yanit_id,
+
+    ilk_mesaj = await message.reply("⌛️ `Hallediyorum..`",
+        quote                    = True,
         disable_web_page_preview = True
     )
     girilen_yazi        = message.command
@@ -94,9 +93,9 @@ async def nekover(client:Client, message:Message):
 async def nekoal(client:Client, message:Message):
     # < Başlangıç
     await log_yolla(client, message)
-    yanit_id  = await yanitlanan_mesaj(message)
-    ilk_mesaj = await message.reply("__Bekleyin..__",
-        reply_to_message_id      = yanit_id,
+
+    ilk_mesaj = await message.reply("⌛️ `Hallediyorum..`",
+        quote                    = True,
         disable_web_page_preview = True
     )
     cevaplanan_mesaj    = message.reply_to_message
