@@ -28,7 +28,7 @@ from Robot.Edevat._ytdl.ytdl_indirici import ytdl_indirici
 from Robot.Edevat._pyrogram.progress import pyro_progress
 from Robot.Edevat.gecici_alan_temizleyici import icinden_gec
 from Robot import INDIRME_ALANI, SESSION_ADI
-from Robot.Edevat._pyrogram.pyro_yardimcilari import kullanici
+from Robot.Edevat._pyrogram.pyro_yardimcilari import kullanici, yanitlanan_mesaj
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from asyncio import sleep
@@ -44,6 +44,7 @@ async def vid(client:Client, message:Message):
         disable_web_page_preview = True
     )
 
+    yanit_id  = await yanitlanan_mesaj(message)
     await message.delete()
     #------------------------------------------------------------- Başlangıç >
     girilen_yazi        = message.text
