@@ -63,7 +63,7 @@ try:
     AkademiRobot          = Client(
         api_id          = API_ID,
         api_hash        = API_HASH,
-        session_name    = ':memory:',
+        name            = SESSION_ADI,
         bot_token       = BOT_TOKEN,
         plugins         = dict(root="Robot/Eklentiler")
     )
