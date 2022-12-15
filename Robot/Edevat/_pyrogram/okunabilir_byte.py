@@ -25,4 +25,4 @@ async def okunabilir_byte(boyut: int) -> str:
         boyut /= binyirmidort
         say += 1
 
-    return str(round(boyut, 2)) + " " + cikti_sozluk[say] + "B"
+    return f"{str(round(boyut, 2))} {cikti_sozluk[say]}B"

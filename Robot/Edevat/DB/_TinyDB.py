@@ -29,14 +29,17 @@ class AkademiRobotDB:
             return None
 
     def ekle(self, uye_id, uye_nick, uye_adi):
-        if not self.ara(self.sorgu.uye_id == uye_id):
-            return self.db.insert({
-                "uye_id"     : uye_id,
-                "uye_nick"   : uye_nick,
-                "uye_adi"    : uye_adi,
-            })
-        else:
-            return None
+        return (
+            None
+            if self.ara(self.sorgu.uye_id == uye_id)
+            else self.db.insert(
+                {
+                    "uye_id": uye_id,
+                    "uye_nick": uye_nick,
+                    "uye_adi": uye_adi,
+                }
+            )
+        )
 
     def sil(self, uye_id):
         if not self.ara(self.sorgu.uye_id == uye_id):
