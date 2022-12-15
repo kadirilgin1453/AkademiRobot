@@ -42,13 +42,11 @@ async def gg_komut(client:Client, message:Message):                           # 
     basla = time()                                                          # Zamanı Başlat
     girdi = " ".join(girilen_yazi[1:])                                      # girdiyi komuttan ayrıştır
 
-    mesaj = f"**Aranan :** `{girdi}`\n\n"                                   # Mesaj'ı Başlatıyoruz
-
     ara = girdi.replace(" ", "+")                                           # boşlukları + ya çeviriyoruz
     numune = f"https://da.gd/s?url=https://lmgtfy.com/?q={ara}%26iie=1"     # gg linkimize ekliyoruz
-    api_tepki = requests.get(numune).text                                   # api tepkisini alıyoruz
+    if api_tepki := requests.get(numune).text:
+        mesaj = f"**Aranan :** `{girdi}`\n\n"                                   # Mesaj'ı Başlatıyoruz
 
-    if api_tepki:                                                           # eğer tepki varsa
         mesaj += f"🔍 [{girdi}]({api_tepki.rstrip()})"                      # Mesaja Ekle
         bitir = time()                                                      # Zamanı Durdur
         sure = bitir - basla                                                # Duran - Başlayan Zaman
@@ -59,5 +57,5 @@ async def gg_komut(client:Client, message:Message):                           # 
         except Exception as hata:
             await hata_log(hata, client, ilk_mesaj)
             return
-    else:                                                                   # Eğer tepki yoksa
+    else:
         await ilk_mesaj.edit("__API Yanıt Vermedi Kanka..__")               # uyarı ver

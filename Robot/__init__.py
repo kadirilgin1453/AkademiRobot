@@ -35,13 +35,10 @@ if (taban.bellenim_surumu.split('-')[-1] != 'aws') and (not os.path.exists("ayar
 
 load_dotenv("ayar.env")
 
-# Yapılandırmanın önceden kullanılan değişkeni kullanarak düzenlenip düzenlenmediğini kontrol edin.
-# Temel olarak, yapılandırma dosyası için kontrol.
-AYAR_KONTROL = os.environ.get("___________LUTFEN_______BU_____SATIRI_____SILIN__________", None)
-
-if AYAR_KONTROL:
-    hata("\n\tLütfen ayar.env dosyanızı düzenlediğinize emin olun /veya\n\tilk hashtag'de belirtilen satırı kaldırın..\n")
-    quit(1)
+if AYAR_KONTROL := os.environ.get(
+    "___________LUTFEN_______BU_____SATIRI_____SILIN__________", None):
+   hata("\n\tLütfen ayar.env dosyanızı düzenlediğinize emin olun /veya\n\tilk hashtag'de belirtilen satırı kaldırın..\n")
+   quit(1)
 
 API_ID          = str(os.environ.get("API_ID", str))
 API_HASH        = str(os.environ.get("API_HASH", str))

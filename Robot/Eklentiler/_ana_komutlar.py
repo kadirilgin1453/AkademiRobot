@@ -59,9 +59,10 @@ async def destek(client:Client, message:Message):
     girilen_yazi = message.text.split()
 
     if len(girilen_yazi) == 1:
-        mesaj = "`DosyaAdı` **Girmelisin!**\n\n"
-
-        mesaj += "__Destek alınabilecek Eklentilerim;__\n"
+        mesaj = (
+            "`DosyaAdı` **Girmelisin!**\n\n"
+            + "__Destek alınabilecek Eklentilerim;__\n"
+        )
         mesaj += eklentilerim()
 
         await ilk_mesaj.edit(mesaj)

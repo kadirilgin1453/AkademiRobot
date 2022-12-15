@@ -26,18 +26,18 @@ async def ytdl_indirici(mesaj:Message, link:str, parametre:str=None) -> Any:
     }
 
     if parametre and parametre == 'mp3':
-        parametreler.update({
+        parametreler |= {
             'format': 'bestaudio/best',
-            'postprocessors': [{
-                'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'mp3',
-                'preferredquality': '320',
-            }],
-        })
+            'postprocessors': [
+                {
+                    'key': 'FFmpegExtractAudio',
+                    'preferredcodec': 'mp3',
+                    'preferredquality': '320',
+                }
+            ],
+        }
     else:
-        parametreler.update({
-            'format': 'best',
-        })
+        parametreler['format'] = 'best'
 
     ytdl = youtube_dl.YoutubeDL(parametreler)
 

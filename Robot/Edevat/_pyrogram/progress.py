@@ -39,7 +39,7 @@ async def pyro_progress(gecerli, toplam, olay_turu, mesaj, baslangic):
         toparla = progress
         toparla += f"**Başarılı:** **{await okunabilir_byte(toplam)}**__'dan__ `{await okunabilir_byte(gecerli)}`\n"
         toparla += f"**Hız:** `{await okunabilir_byte(hiz)}/s`\n"
-        toparla += f"**Tahmini:** __{tahmini_toplam_sure if tahmini_toplam_sure else 'Bitti de son bi kaç ayar yapıyorum..'}__\n"
+        toparla += f"**Tahmini:** __{tahmini_toplam_sure or 'Bitti de son bi kaç ayar yapıyorum..'}__\n"
 
         if mesaj.text != toparla:
             # try:

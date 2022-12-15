@@ -110,7 +110,7 @@ async def nekoal(client:Client, message:Message):
         return
 
     kod = cevaplanan_mesaj.text.split('/')[-1]
-    raw = 'https://nekobin.com/raw/' + kod
+    raw = f'https://nekobin.com/raw/{kod}'
 
     try:
         data = requests.get(raw).content

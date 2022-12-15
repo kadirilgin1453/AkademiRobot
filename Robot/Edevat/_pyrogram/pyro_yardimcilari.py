@@ -16,9 +16,7 @@ async def yanitlanan_mesaj(message:Message) -> Any:
     return yanitlanan_id
 
 async def kullanici(message:Message) -> Any:
-    cevaplanan_mesaj = message.reply_to_message
-
-    if cevaplanan_mesaj:
+    if cevaplanan_mesaj := message.reply_to_message:
         kullanici = cevaplanan_mesaj.from_user
     else:
         kullanici = message.from_user
